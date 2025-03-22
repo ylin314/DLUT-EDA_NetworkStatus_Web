@@ -42,7 +42,6 @@ function showErrorMessage(error) {
 }
 
 async function loadData() {
-    $('#errorMsg').text(``);
     if (!navigator.onLine) {
         showErrorMessage('没有连接到校园网');
         return;
@@ -61,11 +60,12 @@ async function loadData() {
         updateTable(JSON.parse(data));
     } catch (error) {
         if (error.message.includes('Failed to fetch')) {
-            showErrorMessage('net::ERR_CONNECTION_REFUSED OR net::ERR_NETWORK_CHANGED');
+            showErrorMessage('没有连接到校园网');
         } else {
             showErrorMessage(`请求失败: ${error.message}`);
         }
     }
+    $('#errorMsg').text(``);
 }
 
 // function loadData() {
