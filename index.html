@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>开发区校区校园网控制台</title>
+    <link rel="icon" href="./icon.ico" type="image/png" />
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <h2>本机开发区校区校园网状态</h2>
+    <table>
+        <tr>
+            <th>在线状态</th>
+            <td id="onlineStatus">-</td>
+        </tr>
+        <tr>
+            <th>账号</th>
+            <td id="account">-</td>
+        </tr>
+        <tr>
+            <th>姓名</th>
+            <td id="name">-</td>
+        </tr>
+        <tr>
+            <th>IP地址</th>
+            <td id="ipAddress">-</td>
+        </tr>
+        <tr>
+            <th>MAC地址</th>
+            <td id="macAddress">-</td>
+        </tr>
+        <tr>
+            <th>已用流量</th>
+            <td id="usedFlow">-</td>
+        </tr>
+        <tr>
+            <th>剩余流量</th>
+            <td id="remainingFlow">-</td>
+        </tr>
+        <tr>
+            <th>上线时间</th>
+            <td id="loginTime">-</td>
+        </tr>
+    </table>
+    <button id="loginBtn">跳转登录</button>
+    <button id="logoutBtn">一键注销</button>
+    <br />
+    <button id="selfServiceBtn">自助服务</button>
+    <button id="refreshBtn">刷新数据</button>
+    <div class="footer">
+        <hr> 本项目魔改自 <a href="https://github.com/IShiraiKurokoI/DLUT-EDA_NetworkStatus" target="_blank">校园网信息监控面板</a>， 致敬软院传奇开发者 <a href="https://github.com/IShiraiKurokoI" target="_blank">白井黑子</a>
+        <br><br>由于开发区校区校园网获取信息的 API 协议为 http，故本页面无法通过 https 访问 <br><br>如果 跳转登录 后仍无法上网请尝试清除浏览器 Cookie <br><br>本项目没有后端，不会存储任何个人信息，可放心使用
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./scripts.js"></script>
+</body>
+
+</html>
