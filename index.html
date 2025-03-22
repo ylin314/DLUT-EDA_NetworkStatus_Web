@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>开发区校区校园网控制台</title>
-    <link rel="icon" href="./icon.ico" type="image/png" />
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./icon.ico" type="image/png">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script defer src="./script.js"></script>
 </head>
 
 <body>
     <h2>本机开发区校区校园网状态</h2>
+    <div id="errorMsg"></div>
     <table>
         <tr>
             <th>在线状态</th>
@@ -51,11 +54,9 @@
     <button id="selfServiceBtn">自助服务</button>
     <button id="refreshBtn">刷新数据</button>
     <div class="footer">
-        <hr> 本项目魔改自 <a href="https://github.com/IShiraiKurokoI/DLUT-EDA_NetworkStatus" target="_blank">校园网信息监控面板</a>， 致敬软院传奇开发者 <a href="https://github.com/IShiraiKurokoI" target="_blank">白井黑子</a>
-        <br><br>如果 跳转登录 后仍无法上网请尝试清除浏览器 Cookie <br><br>本项目没有后端，不会存储任何个人信息，可放心使用
+        <hr> 本项目魔改自 <a href="https://github.com/IShiraiKurokoI/DLUT-EDA_NetworkStatus" target="_blank">校园网信息监控面板</a>
+        <br><br>如果跳转登录后仍无法上网请尝试清除浏览器 Cookie <br><br>本项目没有后端，不会存储任何个人信息，可放心使用
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="./scripts.js"></script>
 </body>
 
 </html>

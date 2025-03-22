@@ -24,8 +24,10 @@ th, td {
     user-select: none;
 }
 
-#ipAddress {
-    user-select: all;
+#errorMsg {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 th {

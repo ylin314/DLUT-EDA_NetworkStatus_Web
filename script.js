@@ -36,14 +36,46 @@ function cleanTable() {
     $('#loginTime').text('-');
 }
 
-function loadData() {
-    $.get('http://172.20.30.1/drcom/chkstatus?callback=', function (data) {
-        cleanTable();
-        data = "{" + data.split("({")[1].split("})")[0] + "}";
-        data = JSON.parse(data);
-        updateTable(data);
-    });
+function showErrorMessage(error) {
+    $('#errorMsg').text(`数据加载失败: ${error}`);
+    cleanTable();
 }
+
+async function loadData() {
+    $('#errorMsg').text(``);
+    if (!navigator.onLine) {
+        showErrorMessage('没有连接到校园网');
+        return;
+    }
+    try {
+        let response = await fetch('http://172.20.30.1/drcom/chkstatus?callback=');
+        if (!response.ok) {
+            throw new Error(`HTTP 错误 ${response.status}: ${response.statusText}`);
+        }
+
+        let arrayBuffer = await response.arrayBuffer();
+        let decoder = new TextDecoder('gbk');
+        let text = decoder.decode(arrayBuffer);
+
+        let data = "{" + text.split("({")[1].split("})")[0] + "}";
+        updateTable(JSON.parse(data));
+    } catch (error) {
+        if (error.message.includes('Failed to fetch')) {
+            showErrorMessage('net::ERR_CONNECTION_REFUSED OR net::ERR_NETWORK_CHANGED');
+        } else {
+            showErrorMessage(`请求失败: ${error.message}`);
+        }
+    }
+}
+
+// function loadData() {
+//     $.get('http://172.20.30.1/drcom/chkstatus?callback=', function (data) {
+//         cleanTable();
+//         data = "{" + data.split("({")[1].split("})")[0] + "}";
+//         data = JSON.parse(data);
+//         updateTable(data);
+//     });
+// }
 
 $('#loginBtn').click(function () {
     $.get('http://172.20.30.1/drcom/chkstatus?callback=', function (data) {
@@ -72,6 +104,7 @@ $('#logoutBtn').click(function () {
 
 
 $('#refreshBtn').click(function () {
+    cleanTable();
     loadData();
 });
 
