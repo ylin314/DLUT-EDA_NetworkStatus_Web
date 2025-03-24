@@ -42,10 +42,6 @@ function showErrorMessage(error) {
 }
 
 async function loadData() {
-    if (!navigator.onLine) {
-        showErrorMessage('没有连接到校园网');
-        return;
-    }
     try {
         let response = await fetch('http://172.20.30.1/drcom/chkstatus?callback=');
         if (!response.ok) {
@@ -59,13 +55,8 @@ async function loadData() {
         let data = "{" + text.split("({")[1].split("})")[0] + "}";
         updateTable(JSON.parse(data));
     } catch (error) {
-        if (error.message.includes('Failed to fetch')) {
-            showErrorMessage('没有连接到校园网');
-        } else {
-            showErrorMessage(`请求失败: ${error.message}`);
-        }
+        showErrorMessage(`请求失败: ${error.message}`);
     }
-    $('#errorMsg').text(``);
 }
 
 // function loadData() {
