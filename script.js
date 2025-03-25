@@ -10,6 +10,7 @@ function formatBytes(bytes) {
 }
 
 function updateTable(data) {
+    $('#errorMsg').text('');
     $('#onlineStatus').text(data.result === 1 ? '在线' : '离线');
     $('#account').text(data.uid);
     $('#name').text(data.NID);
@@ -41,22 +42,24 @@ function showErrorMessage(error) {
     cleanTable();
 }
 
-async function loadData() {
-    try {
-        let response = await fetch('http://172.20.30.1/drcom/chkstatus?callback=');
-        if (!response.ok) {
-            throw new Error(`HTTP 错误 ${response.status}: ${response.statusText}`);
-        }
+function loadData() {
+    fetch('http://172.20.30.1/drcom/chkstatus?callback=')
+        .then(response => {
+            if (!response.ok) {
+                showErrorMessage(`${response.status} ${response.statusText}`);
+            }
+            return response.arrayBuffer();
+        })
+        .then(arrayBuffer => {
+            let decoder = new TextDecoder('gbk');
+            let text = decoder.decode(arrayBuffer);
 
-        let arrayBuffer = await response.arrayBuffer();
-        let decoder = new TextDecoder('gbk');
-        let text = decoder.decode(arrayBuffer);
-
-        let data = "{" + text.split("({")[1].split("})")[0] + "}";
-        updateTable(JSON.parse(data));
-    } catch (error) {
-        showErrorMessage(`请求失败: ${error.message}`);
-    }
+            let data = "{" + text.split("({")[1].split("})")[0] + "}";
+            updateTable(JSON.parse(data));
+        })
+        .catch(error => {
+            showErrorMessage(`${error.case ?? error}`);
+        });
 }
 
 // function loadData() {
