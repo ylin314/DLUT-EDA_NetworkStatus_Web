@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DUT开发区校区校园网控制面板</title>
+    <title>DUT开发区校区校园网状态面板</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./icon.ico" type="image/png">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -16,7 +16,7 @@
     <div id="errorMsg"></div>
     <table>
         <tr>
-            <th>在线状态</th>
+            <th>登录状态</th>
             <td id="onlineStatus">-</td>
         </tr>
         <tr>
@@ -28,11 +28,11 @@
             <td id="name">-</td>
         </tr>
         <tr>
-            <th>IP地址</th>
+            <th>IP 地址</th>
             <td id="ipAddress">-</td>
         </tr>
         <tr>
-            <th>MAC地址</th>
+            <th>MAC 地址</th>
             <td id="macAddress">-</td>
         </tr>
         <tr>
@@ -48,18 +48,21 @@
             <td id="loginTime">-</td>
         </tr>
     </table>
+
+    <br />
     <button id="loginBtn">跳转登录</button>
     <button id="logoutBtn">一键注销</button>
     <br />
-    <button id="selfServiceBtn">自助服务</button>
+    <button id="selfServiceBtn">账户明细</button>
     <button id="refreshBtn">刷新数据</button>
     <div class="footer">
         <hr> 
+        若跳转登录后仍无法上网，请尝试清除浏览器 cookie
+        <br><br>
         项目源码地址 
-        <a href="https://github.com/Houyi2333/DLUT-EDA_NetworkStatus_Web" target="_blank">校园网信息监控面板</a>，原作者 
-        <a href="https://github.com/IShiraiKurokoI" target="_blank">Shirai_Kuroko</a>        
-        <br><br>若跳转登录后仍无法上网请尝试清除浏览器 Cookie <br><br>本校园网控制面板没有后端，不会存储任何信息
-    </div>
+        <a href="https://github.com/Houyi2333/DLUT-EDA_NetworkStatus_Web" target="_blank">开发区校区校园网信息监控面板</a> ，原作者 
+        <a href="https://github.com/IShiraiKurokoI" target="_blank">IShiraiKurokoI</a>        
+    </div>    
 </body>
 
 </html>

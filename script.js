@@ -9,6 +9,10 @@ function formatBytes(bytes) {
     return bytes.toFixed(2) + ' ' + units[i];
 }
 
+function formatMacAddress(mac) { //格式化MAC地址，传来的全是小写且没有连字符
+    return mac.toUpperCase().match(/.{1,2}/g).join('-');
+}
+
 function updateTable(data) {
     $('#errorMsg').text('');
     $('#onlineStatus').text(data.result === 1 ? '在线' : '离线');
@@ -20,7 +24,7 @@ function updateTable(data) {
         $('#ipAddress').text(data.v46ip);
     }
     if (data.result !== 1) return;
-    $('#macAddress').text(data.olmac.split(':').join('; '));
+    $('#macAddress').text(formatMacAddress(data.olmac)); 
     $('#usedFlow').text(formatBytes(data.flow));
     $('#remainingFlow').text(formatBytes(data.olflow));
     $('#loginTime').text(data.etime);
