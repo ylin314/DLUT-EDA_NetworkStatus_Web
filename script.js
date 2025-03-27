@@ -108,18 +108,19 @@ function loadData() {
 }
 
 
-function checkUserAgent(UserAgent) {  //跨域问题获取不到终端类型字段，但是这部分检测终端类型的代码是直接抄的dashboard里的，所以结果应该没区别
-    var keywords = ["Android", "iPhone", "iPod", "iPad", "Windows Phone", "MQQBrowser"];
+function checkUserAgent(UserAgent) { //跨域问题获取不到终端类型字段，但是这部分检测终端类型的代码是直接抄的dashboard里的，所以结果应该没区别
+    var mobileKeywords = ["Android", "iPhone", "iPod", "iPad", "Windows Phone", "MQQBrowser"];
 
     if (UserAgent.includes("Windows NT")) return "PC";
     if (UserAgent.includes("Macintosh")) return "MAC OS";
 
-    for (var i = 0; i < keywords.length; i++) {
-        if (UserAgent.includes(keywords[i])) return keywords[i];
+    for (var i = 0; i < mobileKeywords.length; i++) {
+        if (UserAgent.includes(mobileKeywords[i])) return "移动终端";
     }
 
-    return "unknown";
+    return "未知设备";
 }
+
 
 // function loadData() {
 //     $.get('http://172.20.30.1/drcom/chkstatus?callback=', function (data) {
