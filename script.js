@@ -9,13 +9,26 @@ function formatBytes(bytes) {
     return bytes.toFixed(2) + ' ' + units[i];
 }
 
-function formatMacAddress(mac) { //格式化MAC地址，传来的全是小写且没有连字符
+function formatMacAddress(mac) {
     return mac.toUpperCase().match(/.{1,2}/g).join('-');
 }
 
 function updateTable(data) {
     $('#errorMsg').text('');
     $('#onlineStatus').text(data.result === 1 ? '在线' : '离线');
+
+    if (data.result !== 1) {
+        $('#account').text('-');
+        $('#name').text('-');
+        $('#ipAddress').text('-');
+        $('#macAddress').text('-');
+        $('#usedFlow').text('-');
+        $('#remainingFlow').text('-');
+        $('#loginTime').text('-');
+        $('#terminalType').text('-');
+        return;
+    }
+
     $('#account').text(data.uid);
     $('#name').text(data.NID);
     if (data.v4ip) {
@@ -23,11 +36,11 @@ function updateTable(data) {
     } else {
         $('#ipAddress').text(data.v46ip);
     }
-    if (data.result !== 1) return;
     $('#macAddress').text(formatMacAddress(data.olmac)); 
     $('#usedFlow').text(formatBytes(data.flow));
     $('#remainingFlow').text(formatBytes(data.olflow));
     $('#loginTime').text(data.etime);
+    $('#terminalType').text(data.terminalType);
 }
 
 function cleanTable() {
@@ -39,6 +52,7 @@ function cleanTable() {
     $('#usedFlow').text('-');
     $('#remainingFlow').text('-');
     $('#loginTime').text('-');
+    $('#terminalType').text('-');
 }
 
 function showErrorMessage(error) {
@@ -46,24 +60,65 @@ function showErrorMessage(error) {
     cleanTable();
 }
 
+let isLoading = false;
+
 function loadData() {
+    if (isLoading)
+        return;
+    isLoading = true; 
+
+    if (!navigator.onLine) {
+        $('#onlineStatus').text('未连接到互联网');
+        $('#account').text('-');
+        $('#name').text('-');
+        $('#ipAddress').text('-');
+        $('#macAddress').text('-');
+        $('#usedFlow').text('-');
+        $('#remainingFlow').text('-');
+        $('#loginTime').text('-');
+        $('#terminalType').text('-');
+        isLoading = false;
+        return;
+    }
+
     fetch('http://172.20.30.1/drcom/chkstatus?callback=')
         .then(response => {
             if (!response.ok) {
                 showErrorMessage(`${response.status} ${response.statusText}`);
+                isLoading = false;
+                return;
             }
             return response.arrayBuffer();
         })
         .then(arrayBuffer => {
             let decoder = new TextDecoder('gbk');
             let text = decoder.decode(arrayBuffer);
-
             let data = "{" + text.split("({")[1].split("})")[0] + "}";
-            updateTable(JSON.parse(data));
+            let parsedData = JSON.parse(data);
+
+            parsedData.terminalType = checkUserAgent(navigator.userAgent);
+            updateTable(parsedData);
         })
         .catch(error => {
-            showErrorMessage(`${error.case ?? error}`);
+            showErrorMessage(`${error.message || error}`);
+        })
+        .finally(() => {
+            isLoading = false;
         });
+}
+
+
+function checkUserAgent(UserAgent) {  //跨域问题获取不到终端类型字段，但是这部分检测终端类型的代码是直接抄的dashboard里的，所以结果应该没区别
+    var keywords = ["Android", "iPhone", "iPod", "iPad", "Windows Phone", "MQQBrowser"];
+
+    if (UserAgent.includes("Windows NT")) return "PC";
+    if (UserAgent.includes("Macintosh")) return "MAC OS";
+
+    for (var i = 0; i < keywords.length; i++) {
+        if (UserAgent.includes(keywords[i])) return keywords[i];
+    }
+
+    return "unknown";
 }
 
 // function loadData() {
