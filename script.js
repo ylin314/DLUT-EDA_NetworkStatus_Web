@@ -9,7 +9,7 @@ function formatBytes(bytes) {
     return bytes.toFixed(2) + ' ' + units[i];
 }
 
-function formatMacAddress(mac) { //格式化MAC地址，传来的全是小写且没有连字符
+function formatMacAddress(mac) {
     return mac.toUpperCase().match(/.{1,2}/g).join('-');
 }
 
@@ -28,6 +28,7 @@ function updateTable(data) {
     $('#usedFlow').text(formatBytes(data.flow));
     $('#remainingFlow').text(formatBytes(data.olflow));
     $('#loginTime').text(data.etime);
+    $('#terminalType').text(data.terminalType);
 }
 
 function cleanTable() {
@@ -57,13 +58,30 @@ function loadData() {
         .then(arrayBuffer => {
             let decoder = new TextDecoder('gbk');
             let text = decoder.decode(arrayBuffer);
-
             let data = "{" + text.split("({")[1].split("})")[0] + "}";
-            updateTable(JSON.parse(data));
+            let parsedData = JSON.parse(data);
+
+            parsedData.terminalType = checkUserAgent(navigator.userAgent);
+
+            updateTable(parsedData);
         })
         .catch(error => {
             showErrorMessage(`${error.case ?? error}`);
         });
+}
+
+function checkUserAgent(UserAgent) {  //跨域问题获取不到终端类型字段，但是这部分检测终端类型的代码是直接抄的dashboard里的，所以结果应该没区别
+    var keywords = ["Android", "iPhone", "iPod", "iPad", "Windows Phone", "MQQBrowser"];
+
+    if (UserAgent.includes("Windows NT")) return "PC";
+    if (UserAgent.includes("Macintosh")) return "MAC OS";
+    if (UserAgent.includes("Linux")) return "PC";
+
+    for (var i = 0; i < keywords.length; i++) {
+        if (UserAgent.includes(keywords[i])) return keywords[i];
+    }
+
+    return "unknown";
 }
 
 // function loadData() {
