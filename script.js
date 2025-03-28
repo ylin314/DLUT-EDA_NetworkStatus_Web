@@ -160,10 +160,10 @@ $('#selfServiceBtn').click(function () {
 });
 
 $('#logoutBtn').click(function () {
-    window.open('http://172.20.30.2:8080/Self/login/logout');
-    // window.open('http://172.20.30.1/', '_blank');
-    // 现在的注销功能基本等于没用
+    // alert("提示：若注销后点击“跳转登录”进入的是校园网“用户自助服务系统”且“在线信息”内无本机，请点击“用户自助服务系统”页面里的“注销登录”继续注销，然后重新尝试登录。");
+    window.open('http://172.20.30.1/', '_blank');
 });
+
 
 
 $('#refreshBtn').click(function () {
