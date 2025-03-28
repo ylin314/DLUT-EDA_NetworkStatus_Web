@@ -160,7 +160,9 @@ $('#selfServiceBtn').click(function () {
 });
 
 $('#logoutBtn').click(function () {
-    window.open('http://172.20.30.1/', '_blank');
+    window.open('http://172.20.30.2:8080/Self/login/logout');
+    // window.open('http://172.20.30.1/', '_blank');
+    // 现在的注销功能基本等于没用
 });
 
 
