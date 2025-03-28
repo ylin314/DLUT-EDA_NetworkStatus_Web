@@ -19,7 +19,7 @@ function formatMacAddress(mac) {
  * 如果响应 Location 头是 http://123.123.123.123/ ，说明在校园网环境。
  * 但是有跨域问题，本地没法测试，
  * 并且这么做虽然能判断是否为校园网环境，但是无法区分是 连接到了DLUT-EDA但是未登录 还是 连接到了无需登录的免费网络(如创中、实验室网络)，还得进一步区分
- * 太麻烦了，所以我摆烂了，等大佬处理
+ * 太麻烦了，所以我摆烂了，等大爹处理
  */
 
 function updateTable(data) {
@@ -65,7 +65,7 @@ function cleanTable() {
 }
 
 function showErrorMessage(error) {
-    $('#errorMsg').text(`数据加载失败: ${error}`);
+    $('#errorMsg').text(`数据加载失败，请检查当前网络环境是否为大工校园网: ${error}`);
     cleanTable();
 }
 
