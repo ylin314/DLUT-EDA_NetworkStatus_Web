@@ -13,6 +13,15 @@ function formatMacAddress(mac) {
     return mac.toUpperCase().match(/.{1,2}/g).join('-');
 }
 
+/* 
+ * 可以通过 GET http://auth.dlut.edu.cn/eportal/redirectortosuccess.jsp
+ * 来判断连接到的校园网还是外部网络：
+ * 如果响应 Location 头是 http://123.123.123.123/ ，说明在校园网环境。
+ * 但是有跨域问题，本地没法测试，
+ * 并且这么做虽然能判断是否为校园网环境，但是无法区分是 连接到了DLUT-EDA但是未登录 还是 连接到了无需登录的免费网络(如创中、实验室网络)，还得进一步区分
+ * 太麻烦了，所以我摆烂了，等大佬处理
+ */
+
 function updateTable(data) {
     $('#errorMsg').text('');
     $('#onlineStatus').text(data.result === 1 ? '在线' : '离线');
@@ -107,18 +116,17 @@ function loadData() {
         });
 }
 
-
-function checkUserAgent(UserAgent) {  //跨域问题获取不到终端类型字段，但是这部分检测终端类型的代码是直接抄的dashboard里的，所以结果应该没区别
-    var keywords = ["Android", "iPhone", "iPod", "iPad", "Windows Phone", "MQQBrowser"];
+function checkUserAgent(UserAgent) { //跨域问题获取不到终端类型字段，但是这个函数是直接抄的dashboard里的，所以结果应该没差
+    var mobileKeywords = ["Android", "iPhone", "iPod", "iPad", "Windows Phone", "MQQBrowser"];
 
     if (UserAgent.includes("Windows NT")) return "PC";
     if (UserAgent.includes("Macintosh")) return "MAC OS";
 
-    for (var i = 0; i < keywords.length; i++) {
-        if (UserAgent.includes(keywords[i])) return keywords[i];
+    for (var i = 0; i < mobileKeywords.length; i++) {
+        if (UserAgent.includes(mobileKeywords[i])) return "移动终端";
     }
 
-    return "unknown";
+    return "未知设备";
 }
 
 // function loadData() {
