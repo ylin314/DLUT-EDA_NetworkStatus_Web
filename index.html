@@ -12,6 +12,7 @@
 </head>
 
 <body>
+<div class="content-wrapper">
     <h2>本机校园网状态</h2>
     <div id="errorMsg"></div>
     <table>
@@ -52,16 +53,19 @@
             <td id="macAddress">-</td>
         </tr>
     </table>
-    <br />
-    <button id="loginBtn">跳转登录</button>
-    <button id="logoutBtn">一键注销</button>
-    <br />
-    <button id="selfServiceBtn">账户明细</button>
-    <button id="refreshBtn">刷新数据</button>
-    <div class="footer">
-        <hr> 若跳转登录后仍无法上网，请尝试清除浏览器 cookie <br><br> 如遇网络故障，可联系开发区校区网络服务办公室进行报修，联系方式为 0411-62274385 或 <a href="mailto:kfqit@dlut.edu.cn">kfqit@dlut.edu.cn</a>
-        <br><br> 项目源码地址 <a href="https://github.com/Houyi2333/DLUT-EDA_NetworkStatus_Web" target="_blank">开发区校区校园网信息监控面板</a> ，原作者 <a href="https://github.com/IShiraiKurokoI" target="_blank">IShiraiKurokoI</a> from <a href="https://github.com/NAOSI-DLUT" target="_blank">NAOSI-DLUT</a>
+    <br>
+    <div class="button-container">
+        <button id="loginBtn">跳转登录</button>
+        <button id="logoutBtn">注销本机</button>
+        <button id="selfServiceBtn">账户明细</button>
+        <button id="refreshBtn">刷新数据</button>
     </div>
+    <br>
+</div>
+<div class="footer">
+    <hr> 若跳转登录后仍无法上网，请尝试清除浏览器 cookie <br><br> 如遇网络故障，可向校区网络服务办公室报修，联系方式为 0411-62274385 或 <a href="mailto:kfqit@dlut.edu.cn">kfqit@dlut.edu.cn</a>
+    <br><br> 项目源码地址 <a href="https://github.com/Houyi2333/DLUT-EDA_NetworkStatus_Web" target="_blank">开发区校区校园网信息监控面板</a> ，原作者 <a href="https://github.com/IShiraiKurokoI" target="_blank">IShiraiKurokoI</a> from <a href="https://github.com/NAOSI-DLUT" target="_blank">NAOSI-DLUT</a>
+</div>
 </body>
 
 </html>

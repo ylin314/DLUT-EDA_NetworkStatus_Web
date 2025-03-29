@@ -19,7 +19,7 @@ function formatMacAddress(mac) {
  * 如果响应 Location 头是 http://123.123.123.123/ ，说明在校园网环境。
  * 但是有跨域问题，本地没法测试，
  * 并且这么做虽然能判断是否为校园网环境，但是无法区分是 连接到了DLUT-EDA但是未登录 还是 连接到了无需登录的免费网络(如创中、实验室网络)，还得进一步区分
- * 太麻烦了，所以我摆烂了，等大佬处理
+ * 太麻烦了，所以我摆烂了，等大爹处理
  */
 
 function updateTable(data) {
@@ -65,7 +65,7 @@ function cleanTable() {
 }
 
 function showErrorMessage(error) {
-    $('#errorMsg').text(`数据加载失败: ${error}`);
+    $('#errorMsg').text(`数据加载失败，请检查当前网络环境是否为大工校园网: ${error}`);
     cleanTable();
 }
 
@@ -160,8 +160,10 @@ $('#selfServiceBtn').click(function () {
 });
 
 $('#logoutBtn').click(function () {
+    // alert("提示：若注销后点击“跳转登录”进入的是校园网“用户自助服务系统”且“在线信息”内无本机，请点击“用户自助服务系统”页面里的“注销登录”继续注销，然后重新尝试登录。");
     window.open('http://172.20.30.1/', '_blank');
 });
+
 
 
 $('#refreshBtn').click(function () {
