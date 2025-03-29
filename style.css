@@ -1,6 +1,16 @@
+html, body {
+    height: 100%; /* 设置页面高度为100% */
+    margin: 0; /* 去除默认边距 */
+    display: flex;
+    flex-direction: column; /* 让子元素垂直排列 */
+}
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
+    display: flex;
+    flex-direction: column; /* 保证内容区域与页脚的排列 */
+    justify-content: space-between; /* 确保页脚和内容之间有空间 */
 }
 
 h2 {
@@ -64,11 +74,26 @@ button:hover {
     background-color: #45a049;
 }
 
+.button-container {
+    display: flex;
+    flex-wrap: wrap; /* 允许换行 */
+    justify-content: center; /* 按钮水平居中 */
+    gap: 3px; /* 按钮之间的间距 */
+    max-width: 400px; /* 限制最大宽度，防止按钮分散太开 */
+}
+
+.content-wrapper {
+    flex: 1; /* 占据剩余空间 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 让内容紧贴顶部 */
+    align-items: center;
+}
+
 .footer {
-    position: fixed;
-    bottom: 1%;
-    left: 0;
-    right: 0;
+    position: relative;
+    text-align: center;
     font-size: 13px;
     color: #555;
+    margin-top: auto; /* 保证页脚在底部 */
 }
