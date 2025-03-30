@@ -18,10 +18,16 @@ body {
     background-attachment: fixed;
 }
 
-h2 {
-    font-size: 30px;
+#errorMsg {
+    font-size: 15px;
+    color: red;
     font-weight: bold;
-    margin: 20px;
+}
+
+h2 {
+    font-size: 28.5px;
+    font-weight: bold;
+    margin: 15px;
 }
 
 .content-wrapper {
@@ -31,15 +37,15 @@ h2 {
     justify-content: flex-start;
     align-items: center;
     padding: 20px;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 
 .table-container {
     background: rgba(255, 255, 255, 0.25);
-    padding: 25px 10px 0;
+    padding: 25px 10px 5px;
     border-radius: 10px;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.25);
-    margin-bottom: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+    margin-bottom: 10px;
     display: inline-block;
 }
 
@@ -67,11 +73,11 @@ th {
     vertical-align: middle;
 }
 
-tr:nth-child(odd) {
+tr:nth-child(even) {
     background-color: rgba(242, 242, 242, 0.4);
 }
 
-tr:nth-child(even) {
+tr:nth-child(odd) {
     background-color: rgba(242, 242, 242, 0.6);
 }
 
@@ -83,17 +89,17 @@ tr:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 3px;
+    gap: 1px;
     padding: 10px;
     width: auto;
-    max-width: 320px;
-    margin-top: 8px;
+    max-width: 330px;
+    margin-top: 5px;
 }
 
 button {
-    margin: 10px;
+    margin: 8px;
     padding: 12px 20px;
-    font-size: 18px;
+    font-size: 17px;
     cursor: pointer;
     background-color: #4CAF50;
     border: none;
