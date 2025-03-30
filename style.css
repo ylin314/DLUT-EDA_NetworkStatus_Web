@@ -35,7 +35,7 @@ h2 {
 }
 
 .table-container {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.6);
     padding: 25px 10px 0;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -112,6 +112,6 @@ button:hover {
     font-size: 13px;
     color: #555;
     margin-top: auto;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.6);
     padding: 0 5px 5px;
 }
