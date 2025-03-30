@@ -35,10 +35,10 @@ h2 {
 }
 
 .table-container {
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.25);
     padding: 25px 10px 0;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.25);
     margin-bottom: 20px;
     display: inline-block;
 }
@@ -63,13 +63,16 @@ td:nth-child(2) {
 }
 
 th {
-    background-color: rgba(242, 242, 242, 0.7);
     text-align: center;
     vertical-align: middle;
 }
 
+tr:nth-child(odd) {
+    background-color: rgba(242, 242, 242, 0.4);
+}
+
 tr:nth-child(even) {
-    background-color: rgba(242, 242, 242, 0.5);
+    background-color: rgba(242, 242, 242, 0.6);
 }
 
 tr:hover {
@@ -112,6 +115,6 @@ button:hover {
     font-size: 13px;
     color: #555;
     margin-top: auto;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.5);
     padding: 0 5px 5px;
 }
