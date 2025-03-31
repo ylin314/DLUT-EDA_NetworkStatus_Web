@@ -1,12 +1,12 @@
 function formatBytes(bytes) {
     const kb = 1024;
-    const units = ['KB', 'MB', 'GB', 'TB'];
+    const units = ['K', 'M', 'G', 'T'];
     let i = 0;
     while (bytes > kb) {
         bytes /= kb;
         i++;
     }
-    return bytes.toFixed(2) + ' ' + units[i];
+    return bytes.toFixed(2) + units[i];
 }
 
 function formatMacAddress(mac) {
@@ -35,6 +35,7 @@ function updateTable(data) {
         $('#remainingFlow').text('-');
         $('#loginTime').text('-');
         $('#terminalType').text('-');
+        $('#flowQuery').text('-');
         return;
     }
 
@@ -46,8 +47,11 @@ function updateTable(data) {
         $('#ipAddress').text(data.v46ip);
     }
     $('#macAddress').text(formatMacAddress(data.olmac)); 
-    $('#usedFlow').text(formatBytes(data.flow));
-    $('#remainingFlow').text(formatBytes(data.olflow));
+
+    let used = formatBytes(data.flow);
+    let remaining = formatBytes(data.olflow);
+    $('#flowQuery').text(`已用${used} 剩余${remaining}`);
+
     $('#loginTime').text(data.etime);
     $('#terminalType').text(data.terminalType);
 }
@@ -62,10 +66,11 @@ function cleanTable() {
     $('#remainingFlow').text('-');
     $('#loginTime').text('-');
     $('#terminalType').text('-');
+    $('#flowQuery').text('-');
 }
 
 function showErrorMessage(error) {
-    $('#errorMsg').text(`数据加载失败，请检查当前网络环境是否为大工校园网: ${error}`);
+    $('#errorMsg').text(`加载失败,请检查是否处于校园网环境:${error}`);
     cleanTable();
 }
 
@@ -86,6 +91,7 @@ function loadData() {
         $('#remainingFlow').text('-');
         $('#loginTime').text('-');
         $('#terminalType').text('-');
+        $('#flowQuery').text('-');
         isLoading = false;
         return;
     }
