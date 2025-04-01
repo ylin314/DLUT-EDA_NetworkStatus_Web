@@ -17,6 +17,8 @@ function formatFee(fee) {
     return (fee / 10000).toFixed(2) + ' ' + '元';
 }
 
+//.1的api返回的信息一堆没用的但是没跨域问题，.2的api有用但是跨域，麻了
+
 /* 
  * 可以通过 GET http://auth.dlut.edu.cn/eportal/redirectortosuccess.jsp
  * 来判断连接到的校园网还是外部网络：
