@@ -1,16 +1,20 @@
 function formatBytes(bytes) {
     const kb = 1024;
-    const units = ['K', 'M', 'G', 'T'];
+    const units = ['KB', 'MB', 'GB', 'TB'];
     let i = 0;
     while (bytes > kb) {
         bytes /= kb;
         i++;
     }
-    return bytes.toFixed(2) + units[i];
+    return bytes.toFixed(2) + ' ' + units[i];
 }
 
 function formatMacAddress(mac) {
     return mac.toUpperCase().match(/.{1,2}/g).join('-');
+}
+
+function formatFee(fee) {
+    return (fee / 10000).toFixed(2) + ' ' + '元';
 }
 
 /* 
@@ -31,11 +35,9 @@ function updateTable(data) {
         $('#name').text('-');
         $('#ipAddress').text('-');
         $('#macAddress').text('-');
-        $('#usedFlow').text('-');
         $('#remainingFlow').text('-');
-        $('#loginTime').text('-');
+        $('#remainingFee').text('-');
         $('#terminalType').text('-');
-        $('#flowQuery').text('-');
         return;
     }
 
@@ -47,12 +49,8 @@ function updateTable(data) {
         $('#ipAddress').text(data.v46ip);
     }
     $('#macAddress').text(formatMacAddress(data.olmac)); 
-
-    let used = formatBytes(data.flow);
-    let remaining = formatBytes(data.olflow);
-    $('#flowQuery').text(`已用${used} 剩余${remaining}`);
-
-    $('#loginTime').text(data.etime);
+    $('#remainingFlow').text(formatBytes(data.olflow));
+    $('#remainingFee').text(formatFee(data.fee));
     $('#terminalType').text(data.terminalType);
 }
 
@@ -62,11 +60,9 @@ function cleanTable() {
     $('#name').text('-');
     $('#ipAddress').text('-');
     $('#macAddress').text('-');
-    $('#usedFlow').text('-');
     $('#remainingFlow').text('-');
-    $('#loginTime').text('-');
+    $('#remainingFee').text('-');
     $('#terminalType').text('-');
-    $('#flowQuery').text('-');
 }
 
 function showErrorMessage(error) {
@@ -87,11 +83,9 @@ function loadData() {
         $('#name').text('-');
         $('#ipAddress').text('-');
         $('#macAddress').text('-');
-        $('#usedFlow').text('-');
         $('#remainingFlow').text('-');
-        $('#loginTime').text('-');
+        $('#remainingFee').text('-');
         $('#terminalType').text('-');
-        $('#flowQuery').text('-');
         isLoading = false;
         return;
     }
