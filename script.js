@@ -50,7 +50,7 @@ function updateTable(data) {
     } else {
         $('#ipAddress').text(data.v46ip);
     }
-    $('#macAddress').text(formatMacAddress(data.olmac)); 
+    $('#macAddress').text(formatMacAddress(data.olmac));
     $('#remainingFlow').text(formatBytes(data.olflow));
     $('#remainingFee').text(formatFee(data.fee));
     $('#terminalType').text(data.terminalType);
@@ -77,7 +77,7 @@ let isLoading = false;
 function loadData() {
     if (isLoading)
         return;
-    isLoading = true; 
+    isLoading = true;
 
     if (!navigator.onLine) {
         $('#onlineStatus').text('未连接到互联网');
@@ -163,7 +163,7 @@ $('#selfServiceBtn').click(function () {
 
 $('#logoutBtn').click(function () {
     // alert("提示：若注销后点击“跳转登录”进入的是校园网“用户自助服务系统”且“在线信息”内无本机，请点击“用户自助服务系统”页面里的“注销登录”继续注销，然后重新尝试登录。");
-    window.open('http://172.20.30.1/', '_blank');
+    window.open('https://man.naosi.org/life/service/network/#%E5%BC%80%E5%8F%91%E5%8C%BA%E6%A0%A1%E5%8C%BA%E6%A0%A1%E5%9B%AD%E7%BD%91%E6%B3%A8%E9%94%80%E6%96%B9%E5%BC%8F/', '_blank');
 });
 
 
