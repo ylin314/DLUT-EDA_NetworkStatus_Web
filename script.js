@@ -162,11 +162,9 @@ $('#selfServiceBtn').click(function () {
 });
 
 $('#logoutBtn').click(function () {
-    // alert("提示：若注销后点击“跳转登录”进入的是校园网“用户自助服务系统”且“在线信息”内无本机，请点击“用户自助服务系统”页面里的“注销登录”继续注销，然后重新尝试登录。");
-    window.open('./logout.html', '_blank');
+    //在新标签页打开.2的注销url，目前会把.2dashboard登录状态和本机的联网状态都进行注销
+    window.open('http://172.20.30.2:8080/Self/login/logout', '_blank');
 });
-
-
 
 $('#refreshBtn').click(function () {
     cleanTable();
