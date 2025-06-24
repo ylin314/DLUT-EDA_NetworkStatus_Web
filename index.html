@@ -10,6 +10,9 @@
     <!-- jquery-3.6.0.min.js本地版 -->
     <script src="./jquery.min.js"></script>
     <script defer src="./script.js"></script>
+    <!-- sakana~ -->
+    <link rel="stylesheet" href="./sakana/sakana.min.css">
+    <script src="./sakana/sakana.min.js"></script>
 </head>
 
 <body>
@@ -67,6 +70,16 @@
         <br>
         <br>项目源码地址 <a href="https://github.com/ylin314/DLUT-EDA_NetworkStatus_Web" target="_blank">开发区校区校园网信息面板</a> ，原作者 <a href="https://github.com/IShiraiKurokoI" target="_blank">IShiraiKurokoI</a> from <a href="https://github.com/NAOSI-DLUT" target="_blank">NAOSI-DLUT</a>
     </div>
+    <!-- Sakana Widget 容器 -->
+    <div id="sakana-widget" class="sakana-float" style="
+        position: fixed;
+        right: 40px;
+        bottom: 40px;
+        z-index: 5;
+    "></div>
+    <script>
+        new SakanaWidget({ }).mount('#sakana-widget');
+    </script>
 </body>
 
 </html>

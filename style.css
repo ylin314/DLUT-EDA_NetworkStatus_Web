@@ -131,3 +131,10 @@ button:hover {
     justify-content: center;
     margin-top: 5px;
 }
+
+/* 手机端不显示 */
+@media screen and (max-width: 768px) {
+  .sakana-float {
+    display: none !important;
+  }
+}
