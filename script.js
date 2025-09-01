@@ -171,9 +171,7 @@ $('#refreshBtn').click(function () {
     loadData();
 });
 
-$('#faqBtn').click(function () {
-    window.open('./faq.html', '_blank');
-});
+
 
 loadData();
 setInterval(loadData, 5000);
