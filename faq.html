@@ -81,20 +81,20 @@
       <h2>校园网常见问题</h2>
 
 <p style="text-align:center; font-size:0.9em; color:#666; margin-top:0.2em;">
-  本页面内容由 NAOSI 维护，如遇到未在本页列出的问题，请联系<strong>开发区校区网络服务办公室</strong>解决。
+  本页面内容由 NAOSI 维护，若遇到未在本页列出的问题，请联系<strong>开发区校区网络服务办公室</strong>解决。
 </p>
 
 <hr>
 
 <p><strong>Q:</strong> 已经登录校园网账号，但仍无法连接网络，“用户自助服务系统”中未显示当前设备在线信息，怎么办？</p>
 <img src="./faq_assets/faq1.jpg" alt="FAQ1">
-<p><strong>A:</strong> 一般是因为设备实际上未成功登录校园网，仅登录了用户自助服务系统。解决方法为：</p>
+<p><strong>A:</strong> 这种情况一般是仅登录了用户自助服务系统，实际上当前设备并未成功登录校园网。解决方法为：</p>
 <ol>
   <li><strong>法一：</strong>点击"注销登录"按钮后，访问 <a href="http://172.20.30.3/" target="_blank">http://172.20.30.3/</a> 重新登录；<br>
   <img src="./faq_assets/faq2.jpg" alt="FAQ2"></li>
-  <li><strong>法二：</strong>或直接清除浏览器 cookie 后重新登录。</li>
+  <li><strong>法二：</strong>直接清除浏览器 cookie 后重新登录。</li>
     </ol>
-      <p>手机/平板电脑等移动设备，尽量通过连接 WiFi 后系统<strong>自动弹出</strong>的登录页面进行登录，直接在手机浏览器访问 http://172.20.30.3/ 登录有可能连不上校园网。</p>
+      <p>注意：手机/平板电脑等移动设备，尽量通过连接 WiFi 后系统<strong>自动弹出</strong>的登录页面进行登录，直接在手机浏览器访问 http://172.20.30.3/ 登录有可能连不上校园网。</p>
 
     <hr>
 
@@ -109,15 +109,20 @@
 
     <hr>
 
-    <p><strong>Q:</strong> 连接了校园网但是访问不了网页，浏览器提示如图所示，怎么办？</p>
+    <p><strong>Q:</strong> 为什么插上网线之后我的电脑就断网了？</p>
+    <p><strong>A:</strong> 连接网线后设备 MAC 地址发生变化，断网是正常现象，重新登录校园网即可。</p>
+
+    <hr>
+
+    <p><strong>Q:</strong> 连接了校园网但是访问不了网页，浏览器提示如图所示（错误代码通常为 ERR_PROXY_CONNECTION_FAILED），怎么办？</p>
     <img src="./faq_assets/proxy1.jpg" alt="代理提示示例1" style="max-width:40%;height:auto;margin-right:1rem;">
     <p><strong>A:</strong> 一般是因为之前使用过代理工具并且非正常关闭（比如未关闭代理就直接关机），导致 Windows 系统代理设置被修改，从而影响上网。解决办法为，重新打开代理工具然后正常关闭来恢复系统代理设置，或在 Windows 设置里搜索并运行“网络重置”然后重启电脑。</p>
 
     <hr>
 
-    <p><strong>Q:</strong> 连接了校园网但是访问不了网页，浏览器提示如图所示，怎么办？</p>
+    <p><strong>Q:</strong> 连接了校园网但是访问不了网页，浏览器提示如图所示（错误代码通常为 DNS_PROBE_FINISHED_NO_INTERNET），怎么办？</p>
     <img src="./faq_assets/dns1.jpg" alt="DNS提示示例1" style="max-width:45%;height:auto;margin-right:1rem;">
-    <p><strong>A:</strong> 该问题是未将 DNS 设置为自动获取导致的。解决办法为，打开网络连接 -> 属性，在 IPv4 设置中，将 IP 地址和 DNS 服务器地址均设置为“自动获得”，保存设置即可。</p>
+    <p><strong>A:</strong> 该问题是 DNS 非自动获取造成的。解决办法为，打开控制面板 -> 网络和共享中心 -> 活动网络 -> 属性，在 IPv4 设置中，将 IP 地址和 DNS 服务器地址均设置为“自动获得”，保存设置即可（IPv6 同理，不过一般遇不到这问题）。</p>
     <img src="./faq_assets/dns2.jpg" alt="DNS2">
 
     <hr>
@@ -139,11 +144,6 @@
 
     <p><strong>Q:</strong> 我电信/移动/联通/广电校园卡怎么这么慢，是不是学校的问题？</p>
     <p><strong>A:</strong> 所谓的“校园卡”是各运营商提供的学生优惠<strong>流量卡</strong>，与大连理工大学无关。该卡无法直接使用校内网络资源，不受学校网信中心管控。遇到问题请咨询对应运营商客服。</p>
-
-    <hr>
-
-    <p><strong>Q:</strong> 为什么插上网线之后我的电脑就断网了？</p>
-    <p><strong>A:</strong> 插网线后设备 MAC 地址发生变化，断网是正常现象，重新登录校园网即可。</p>
 
     <hr>
 
