@@ -131,15 +131,6 @@ function checkUserAgent(UserAgent) { //跨域问题获取不到终端类型字�
     return "未知设备";
 }
 
-// function loadData() {
-//     $.get('http://172.20.30.1/drcom/chkstatus?callback=', function (data) {
-//         cleanTable();
-//         data = "{" + data.split("({")[1].split("})")[0] + "}";
-//         data = JSON.parse(data);
-//         updateTable(data);
-//     });
-// }
-
 $('#loginBtn').click(function () {
     $.get('http://172.20.30.1/drcom/chkstatus?callback=', function (data) {
         data = "{" + data.split("({")[1].split("})")[0] + "}";
@@ -163,6 +154,7 @@ $('#selfServiceBtn').click(function () {
 
 $('#logoutBtn').click(function () {
     //在新标签页打开.2的注销url，目前会把.2dashboard登录状态和本机的联网状态都进行注销
+    alert('单击确定后注销当前校园网账号，但请不要在新弹出的窗口进行登录操作，请重新进入172.20.30.3进行登录！');
     window.open('http://172.20.30.2:8080/Self/login/logout', '_blank');
 });
 
@@ -170,8 +162,6 @@ $('#refreshBtn').click(function () {
     cleanTable();
     loadData();
 });
-
-
 
 loadData();
 setInterval(loadData, 5000);
